@@ -15,6 +15,10 @@ class GameViewController: UIViewController {
         super.viewDidLoad()
 
         if let scene = GameScene(fileNamed:"GameScene") {
+            
+            // set up our global positioning element
+            gameScene = scene
+            
             // Configure the view.
             let skView = self.view as! SKView
             skView.showsFPS = true

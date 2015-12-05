@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		430F63551C1225B600D90BA7 /* pewpew.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 430F63541C1225B600D90BA7 /* pewpew.mp3 */; };
+		430F63571C125FC200D90BA7 /* ProjectileElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430F63561C125FC200D90BA7 /* ProjectileElements.swift */; };
+		430F63591C12962D00D90BA7 /* coinage.png in Resources */ = {isa = PBXBuildFile; fileRef = 430F63581C12962D00D90BA7 /* coinage.png */; };
 		43AEEF9B1C0B9A13003180C0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43AEEF9A1C0B9A13003180C0 /* AppDelegate.swift */; };
 		43AEEF9D1C0B9A13003180C0 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 43AEEF9C1C0B9A13003180C0 /* GameScene.sks */; };
 		43AEEF9F1C0B9A13003180C0 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43AEEF9E1C0B9A13003180C0 /* GameScene.swift */; };
@@ -18,6 +21,12 @@
 		43AEEFBF1C0B9A14003180C0 /* WharryNathan_MGD_Proj1UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43AEEFBE1C0B9A14003180C0 /* WharryNathan_MGD_Proj1UITests.swift */; };
 		43AEEFCF1C0D426B003180C0 /* coins.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 43AEEFCE1C0D426B003180C0 /* coins.mp3 */; };
 		43AEEFD11C0D4B9A003180C0 /* startgame.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 43AEEFD01C0D4B9A003180C0 /* startgame.mp3 */; };
+		43FD76341C0FF6910026424B /* characterNodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43FD76331C0FF6910026424B /* characterNodes.swift */; };
+		43FD76361C0FF89A0026424B /* CharacterProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43FD76351C0FF89A0026424B /* CharacterProtocols.swift */; };
+		43FD76381C0FFAB60026424B /* GlobalElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43FD76371C0FFAB60026424B /* GlobalElements.swift */; };
+		43FD763B1C114AF20026424B /* Enemy.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 43FD763A1C114AF20026424B /* Enemy.atlas */; };
+		43FD763D1C114B020026424B /* Player.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 43FD763C1C114B020026424B /* Player.atlas */; };
+		43FD76411C114F080026424B /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43FD76401C114F080026424B /* Player.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +47,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		430F63541C1225B600D90BA7 /* pewpew.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = pewpew.mp3; sourceTree = "<group>"; };
+		430F63561C125FC200D90BA7 /* ProjectileElements.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectileElements.swift; sourceTree = "<group>"; };
+		430F63581C12962D00D90BA7 /* coinage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = coinage.png; path = Assets.xcassets/coinage.imageset/coinage.png; sourceTree = "<group>"; };
 		43AEEF971C0B9A13003180C0 /* WharryNathan_MGD_Proj1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WharryNathan_MGD_Proj1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		43AEEF9A1C0B9A13003180C0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		43AEEF9C1C0B9A13003180C0 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -55,6 +67,12 @@
 		43AEEFC01C0B9A14003180C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		43AEEFCE1C0D426B003180C0 /* coins.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = coins.mp3; sourceTree = "<group>"; };
 		43AEEFD01C0D4B9A003180C0 /* startgame.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = startgame.mp3; sourceTree = "<group>"; };
+		43FD76331C0FF6910026424B /* characterNodes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = characterNodes.swift; sourceTree = "<group>"; };
+		43FD76351C0FF89A0026424B /* CharacterProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterProtocols.swift; sourceTree = "<group>"; };
+		43FD76371C0FFAB60026424B /* GlobalElements.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalElements.swift; sourceTree = "<group>"; };
+		43FD763A1C114AF20026424B /* Enemy.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Enemy.atlas; sourceTree = "<group>"; };
+		43FD763C1C114B020026424B /* Player.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Player.atlas; sourceTree = "<group>"; };
+		43FD76401C114F080026424B /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +100,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		430F63531C12257400D90BA7 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				430F63541C1225B600D90BA7 /* pewpew.mp3 */,
+				43AEEFD01C0D4B9A003180C0 /* startgame.mp3 */,
+				43AEEFCE1C0D426B003180C0 /* coins.mp3 */,
+			);
+			name = Sounds;
+			sourceTree = "<group>";
+		};
 		43AEEF8E1C0B9A13003180C0 = {
 			isa = PBXGroup;
 			children = (
@@ -105,11 +133,17 @@
 		43AEEF991C0B9A13003180C0 /* WharryNathan_MGD_Proj1 */ = {
 			isa = PBXGroup;
 			children = (
-				43AEEFD01C0D4B9A003180C0 /* startgame.mp3 */,
-				43AEEFCE1C0D426B003180C0 /* coins.mp3 */,
+				430F63581C12962D00D90BA7 /* coinage.png */,
+				430F63531C12257400D90BA7 /* Sounds */,
+				43FD76391C114ACF0026424B /* Atlas Files */,
 				43AEEF9A1C0B9A13003180C0 /* AppDelegate.swift */,
 				43AEEF9C1C0B9A13003180C0 /* GameScene.sks */,
 				43AEEF9E1C0B9A13003180C0 /* GameScene.swift */,
+				430F63561C125FC200D90BA7 /* ProjectileElements.swift */,
+				43FD76401C114F080026424B /* Player.swift */,
+				43FD76331C0FF6910026424B /* characterNodes.swift */,
+				43FD76351C0FF89A0026424B /* CharacterProtocols.swift */,
+				43FD76371C0FFAB60026424B /* GlobalElements.swift */,
 				43AEEFA01C0B9A13003180C0 /* GameViewController.swift */,
 				43AEEFA21C0B9A13003180C0 /* Main.storyboard */,
 				43AEEFA51C0B9A13003180C0 /* Assets.xcassets */,
@@ -135,6 +169,15 @@
 				43AEEFC01C0B9A14003180C0 /* Info.plist */,
 			);
 			path = WharryNathan_MGD_Proj1UITests;
+			sourceTree = "<group>";
+		};
+		43FD76391C114ACF0026424B /* Atlas Files */ = {
+			isa = PBXGroup;
+			children = (
+				43FD763C1C114B020026424B /* Player.atlas */,
+				43FD763A1C114AF20026424B /* Enemy.atlas */,
+			);
+			name = "Atlas Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -247,9 +290,13 @@
 				43AEEFCF1C0D426B003180C0 /* coins.mp3 in Resources */,
 				43AEEFD11C0D4B9A003180C0 /* startgame.mp3 in Resources */,
 				43AEEF9D1C0B9A13003180C0 /* GameScene.sks in Resources */,
+				43FD763B1C114AF20026424B /* Enemy.atlas in Resources */,
+				43FD763D1C114B020026424B /* Player.atlas in Resources */,
 				43AEEFA91C0B9A13003180C0 /* LaunchScreen.storyboard in Resources */,
 				43AEEFA61C0B9A13003180C0 /* Assets.xcassets in Resources */,
 				43AEEFA41C0B9A13003180C0 /* Main.storyboard in Resources */,
+				430F63591C12962D00D90BA7 /* coinage.png in Resources */,
+				430F63551C1225B600D90BA7 /* pewpew.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -275,8 +322,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				43AEEF9F1C0B9A13003180C0 /* GameScene.swift in Sources */,
+				430F63571C125FC200D90BA7 /* ProjectileElements.swift in Sources */,
+				43FD76361C0FF89A0026424B /* CharacterProtocols.swift in Sources */,
+				43FD76341C0FF6910026424B /* characterNodes.swift in Sources */,
 				43AEEFA11C0B9A13003180C0 /* GameViewController.swift in Sources */,
+				43FD76411C114F080026424B /* Player.swift in Sources */,
 				43AEEF9B1C0B9A13003180C0 /* AppDelegate.swift in Sources */,
+				43FD76381C0FFAB60026424B /* GlobalElements.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -505,6 +557,7 @@
 				43AEEFC51C0B9A14003180C0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		43AEEFC61C0B9A14003180C0 /* Build configuration list for PBXNativeTarget "WharryNathan_MGD_Proj1Tests" */ = {
 			isa = XCConfigurationList;
@@ -513,6 +566,7 @@
 				43AEEFC81C0B9A14003180C0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		43AEEFC91C0B9A14003180C0 /* Build configuration list for PBXNativeTarget "WharryNathan_MGD_Proj1UITests" */ = {
 			isa = XCConfigurationList;
@@ -521,6 +575,7 @@
 				43AEEFCB1C0B9A14003180C0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
