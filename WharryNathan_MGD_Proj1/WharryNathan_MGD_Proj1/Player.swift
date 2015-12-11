@@ -20,18 +20,22 @@ class hero: character, pTargetable {
         super.init()   //  initialize the default values from the SuperClass ( character )
         
         // override any values here
-        scorePoints = 5         //change the default scorePoints from 1 to 5
+        health = 5         //change the default scorePoints from 1 to 5
         
         let texture = SKTexture(imageNamed: "player")
         let xSize = texture.size().width*scale                // Create The texture for the top ( visible sprite )
         let ySize = texture.size().height*scale
         let charSize = CGSize(width: xSize, height: ySize)
         
+        /* removing physics as this is just a stand in body
+
         self.physicsBody = SKPhysicsBody(texture: texture, size: charSize)
         self.physicsBody?.dynamic = false
         self.physicsBody?.affectedByGravity = false            // ( physical body stuff )
         self.physicsBody?.mass = 1.0
         self.physicsBody?.allowsRotation = false
+
+        */
         self.name = "player"
         
         let top = SKSpriteNode(texture: texture, size: charSize)
@@ -66,8 +70,8 @@ class hero: character, pTargetable {
     
     func shoot() {
         
-        let newBullet = bulletPlayer()
-        newBullet.position = CGPoint(x: 50, y: 0)
+        let newBullet = bullet()
+        newBullet.position = bulletPosition
         self.addChild(newBullet)
         newBullet.physicsBody?.velocity = CGVector(dx: 350, dy: 0)
         

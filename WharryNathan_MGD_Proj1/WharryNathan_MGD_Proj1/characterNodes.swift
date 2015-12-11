@@ -12,7 +12,7 @@ import SpriteKit
 class character: SKNode {
     
     // set up the global variables for use in our character models (both our player and enemies)
-    var scorePoints = 1
+    var health = 1
     var charSize = CGSize(width: 50, height: 50)
     
     // setup our initializer

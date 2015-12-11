@@ -10,6 +10,10 @@
 		430F63551C1225B600D90BA7 /* pewpew.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 430F63541C1225B600D90BA7 /* pewpew.mp3 */; };
 		430F63571C125FC200D90BA7 /* ProjectileElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430F63561C125FC200D90BA7 /* ProjectileElements.swift */; };
 		430F63591C12962D00D90BA7 /* coinage.png in Resources */ = {isa = PBXBuildFile; fileRef = 430F63581C12962D00D90BA7 /* coinage.png */; };
+		43670AA11C19168B0088EE8F /* Enemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43670AA01C19168B0088EE8F /* Enemy.swift */; };
+		43670AA31C194CBE0088EE8F /* Bullet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43670AA21C194CBE0088EE8F /* Bullet.swift */; };
+		43670AA51C1A7F160088EE8F /* WinScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43670AA41C1A7F160088EE8F /* WinScene.swift */; };
+		43670AA71C1A88250088EE8F /* LoseScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43670AA61C1A88250088EE8F /* LoseScene.swift */; };
 		43AEEF9B1C0B9A13003180C0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43AEEF9A1C0B9A13003180C0 /* AppDelegate.swift */; };
 		43AEEF9D1C0B9A13003180C0 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 43AEEF9C1C0B9A13003180C0 /* GameScene.sks */; };
 		43AEEF9F1C0B9A13003180C0 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43AEEF9E1C0B9A13003180C0 /* GameScene.swift */; };
@@ -50,6 +54,10 @@
 		430F63541C1225B600D90BA7 /* pewpew.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = pewpew.mp3; sourceTree = "<group>"; };
 		430F63561C125FC200D90BA7 /* ProjectileElements.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectileElements.swift; sourceTree = "<group>"; };
 		430F63581C12962D00D90BA7 /* coinage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = coinage.png; path = Assets.xcassets/coinage.imageset/coinage.png; sourceTree = "<group>"; };
+		43670AA01C19168B0088EE8F /* Enemy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enemy.swift; sourceTree = "<group>"; };
+		43670AA21C194CBE0088EE8F /* Bullet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bullet.swift; sourceTree = "<group>"; };
+		43670AA41C1A7F160088EE8F /* WinScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WinScene.swift; sourceTree = "<group>"; };
+		43670AA61C1A88250088EE8F /* LoseScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoseScene.swift; sourceTree = "<group>"; };
 		43AEEF971C0B9A13003180C0 /* WharryNathan_MGD_Proj1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WharryNathan_MGD_Proj1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		43AEEF9A1C0B9A13003180C0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		43AEEF9C1C0B9A13003180C0 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -139,8 +147,12 @@
 				43AEEF9A1C0B9A13003180C0 /* AppDelegate.swift */,
 				43AEEF9C1C0B9A13003180C0 /* GameScene.sks */,
 				43AEEF9E1C0B9A13003180C0 /* GameScene.swift */,
+				43670AA41C1A7F160088EE8F /* WinScene.swift */,
+				43670AA61C1A88250088EE8F /* LoseScene.swift */,
 				430F63561C125FC200D90BA7 /* ProjectileElements.swift */,
 				43FD76401C114F080026424B /* Player.swift */,
+				43670AA21C194CBE0088EE8F /* Bullet.swift */,
+				43670AA01C19168B0088EE8F /* Enemy.swift */,
 				43FD76331C0FF6910026424B /* characterNodes.swift */,
 				43FD76351C0FF89A0026424B /* CharacterProtocols.swift */,
 				43FD76371C0FFAB60026424B /* GlobalElements.swift */,
@@ -324,9 +336,13 @@
 				43AEEF9F1C0B9A13003180C0 /* GameScene.swift in Sources */,
 				430F63571C125FC200D90BA7 /* ProjectileElements.swift in Sources */,
 				43FD76361C0FF89A0026424B /* CharacterProtocols.swift in Sources */,
+				43670AA71C1A88250088EE8F /* LoseScene.swift in Sources */,
 				43FD76341C0FF6910026424B /* characterNodes.swift in Sources */,
+				43670AA51C1A7F160088EE8F /* WinScene.swift in Sources */,
 				43AEEFA11C0B9A13003180C0 /* GameViewController.swift in Sources */,
+				43670AA11C19168B0088EE8F /* Enemy.swift in Sources */,
 				43FD76411C114F080026424B /* Player.swift in Sources */,
+				43670AA31C194CBE0088EE8F /* Bullet.swift in Sources */,
 				43AEEF9B1C0B9A13003180C0 /* AppDelegate.swift in Sources */,
 				43FD76381C0FFAB60026424B /* GlobalElements.swift in Sources */,
 			);
@@ -474,6 +490,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Project3W.WharryNathan-MGD-Proj1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -485,6 +502,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Project3W.WharryNathan-MGD-Proj1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
