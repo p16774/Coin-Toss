@@ -14,6 +14,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     // set a display variable
     var reset : Bool = false
+    var showInstr : Bool = false
     
     
     override func didMoveToView(view: SKView) {
@@ -37,7 +38,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         // Create the world bounds to prevent objects going off screen and allowing collisions
         let gameBorder = SKPhysicsBody(edgeLoopFromRect: self.frame)
         gameBorder.friction = 0
-        //self.physicsBody = gameBorder
+        gameBorder.categoryBitMask = noCategory
+        gameBorder.contactTestBitMask = bulletCategory
+        gameBorder.collisionBitMask = bulletCategory
+        self.physicsBody = gameBorder
         
         // manipulate the background images
         bgImage.size = self.frame.size
@@ -48,7 +52,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         bgImage2.position = CGPointMake(bgImage2.size.width-1, 0)
         bgImage2.anchorPoint = CGPointZero
         bgImage2.zPosition = layers.backLevel
-
         
         // create walkingpath image
         walkingPath.size = self.frame.size
@@ -59,6 +62,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         walkingPath2.position = CGPointMake(walkingPath2.size.width-1, 0)
         walkingPath2.anchorPoint = CGPointZero
         walkingPath2.zPosition = layers.groundLevel
+        
+        // create the credits backgroud
+        creditsImage.position = CGPointMake(self.frame.width/2, self.frame.height/2)
+        creditsImage.zPosition = layers.buttonLevel+60
+        creditsImage.size = CGSize(width: self.frame.width, height: self.frame.height/2)
+        creditsImage.name = "instructions"
         
         // setup the score display
         scoreLabel = SKLabelNode(fontNamed: "Chalkduster")
@@ -73,41 +82,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         scoreTotal.text = "\(scoreNum)"
         scoreTotal.fontSize = 30
         scoreTotal.position = CGPointMake(165, self.frame.height-50)
-        /* Not used for game
-        
-        // add a sprite coin image
-        let coinImage = SKSpriteNode(imageNamed: "coinage.png")
-        coinImage.position = CGPointMake(300, 300)
-        coinImage.zPosition = layers.gameLevel
-        coinImage.name = "coin"
-        
-        // add second coin image for collision check
-        let coinImage2 = SKSpriteNode(imageNamed: "coinage.png")
-        coinImage2.position = CGPointMake(700, 300)
-        coinImage2.zPosition = layers.gameLevel
-        coinImage2.name = "bouncycoin"
-        
-        // create the coin physics body for collision check
-        let coinPhysics = SKPhysicsBody(circleOfRadius: 18)
-        coinPhysics.allowsRotation = false
-        coinPhysics.affectedByGravity = true
-        coinPhysics.friction = 0
-        coinPhysics.restitution = 1
-        coinPhysics.linearDamping = 0
-        coinPhysics.angularDamping = 0
-        
-        // apply coin physics
-        coinImage2.physicsBody = coinPhysics
-        
-        // add the coin label
-        let coinLabel = SKLabelNode(fontNamed: "Arial")
-        coinLabel.text = "Push coin for sound!"
-        coinLabel.fontSize = 25
-        coinLabel.position = CGPointMake(300, 320)
-        coinLabel.zPosition = layers.gameLevel
-        coinLabel.name = "coinlabel"
-        
-        */
         
         // create the start button
         startBtn = SKSpriteNode(imageNamed: "button.png")
@@ -151,15 +125,33 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         resumeLabel.zPosition = layers.buttonLevel + 1
         resumeLabel.name = "resumegame"
         
-        /**                           **/
-        /*  Original Bullet Animation  */
-        /**                           **/
+        // create the instructions button
+        instructionsBtn = SKSpriteNode(imageNamed: "button.png")
+        instructionsBtn.position = CGPointMake(self.frame.width/2-250, self.frame.height/2+250)
+        instructionsBtn.zPosition = layers.buttonLevel
+        instructionsBtn.name = "instructions"
         
-        //let bulletDuration : Double = 5
-        //let bulletPath = SKAction.moveToX(self.frame.width + 30, duration: bulletDuration)
-        //coinImage.runAction(bulletPath)
-        // loop image in the "update" section below to bring the coin back and send it off the screen again
+        // create the instructions label
+        instructionsLabel = SKLabelNode(fontNamed: "Charcoal")
+        instructionsLabel.text = "Instructions"
+        instructionsLabel.fontSize = 25
+        instructionsLabel.position = CGPointMake(self.frame.width/2-250, (self.frame.height/2)+240)
+        instructionsLabel.zPosition = layers.buttonLevel + 1
+        instructionsLabel.name = "instructions"
         
+        // create the credits button
+        creditsBtn = SKSpriteNode(imageNamed: "button.png")
+        creditsBtn.position = CGPointMake(self.frame.width/2+250, self.frame.height/2+250)
+        creditsBtn.zPosition = layers.buttonLevel
+        creditsBtn.name = "credits"
+        
+        // create the credits button
+        creditsLabel = SKLabelNode(fontNamed: "Charcoal")
+        creditsLabel.text = "Game Credits"
+        creditsLabel.fontSize = 25
+        creditsLabel.position = CGPointMake(self.frame.width/2+250, (self.frame.height/2)+240)
+        creditsLabel.zPosition = layers.buttonLevel + 1
+        creditsLabel.name = "credits"
 
         /* Add Elements to the Parent View of GameScene */
         self.addChild(bgImage)
@@ -172,6 +164,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         objectsLayer.addChild(scoreTotal)
         objectsLayer.addChild(startBtn)
         objectsLayer.addChild(startLabel)
+        objectsLayer.addChild(instructionsBtn)
+        objectsLayer.addChild(instructionsLabel)
+        objectsLayer.addChild(creditsBtn)
+        objectsLayer.addChild(creditsLabel)
         objectsLayer.addChild(appHeader)
         
     }
@@ -179,8 +175,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func spawnPlayer(at: CGPoint) {
         
         // elements for creating the player character and adding to the view
-        newPlayer.position = at  // not sure why this errors on restart - if I comment it out everything runs fine excep the starting player location
-        objectsLayer.addChild(newPlayer)
+        //newPlayer.position = at  // not sure why this errors on restart - if I comment it out everything runs fine except the starting player location
+        //objectsLayer.addChild(newPlayer)
         
     }
     
@@ -245,7 +241,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         runAction(SKAction.repeatActionForever(
             SKAction.sequence([
                 SKAction.runBlock({ self.spawnEnemy(enemyPosition, level: 1) }),
-                SKAction.waitForDuration(1.0)
+                SKAction.waitForDuration(3.0)
                 ])
             ))
 
@@ -275,7 +271,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }
         })
     }
-    
+        
     // function to pause the game
     func pauseGame(value: Bool) {
         
@@ -329,7 +325,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         // function to play audio
         func playAudio(name: String) {
             
-            let playSound = SKAction.playSoundFileNamed(name, waitForCompletion: false)
+            let playSound = SKAction.playSoundFileNamed(name, waitForCompletion: true)
             runAction(playSound)
         
         }
@@ -372,8 +368,47 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 
                 // pause the game - function needed to update before pausing correctly
                 self.runAction(SKAction.runBlock({ self.pauseGame(true) }))
+                
+            } else if touchedNode.name == "instructions" {
+                
+                // set up whether to show or hide the instructions
+                if showInstr == false {
+                    
+                    // set the instructions variable to true
+                    showInstr = true
+                    
+                    // show the instructions
+                    displayOverlay(true, type: "instructions")
+                    
+                } else if showInstr == true {
+                    
+                    // set the instructions variable to false
+                    showInstr = false
+                    
+                    // remove the instructions
+                    displayOverlay(false, type: "instructions")
+                    
+                }
+                
+            } else if touchedNode.name == "credits" {
+                
+                // remove current scene
+                self.removeAllChildren()
+                self.removeAllActions()
+                self.scene?.removeFromParent()
+                self.removeFromParent()
+                
+                // Transition to the Game Over Scene
+                gameScene = CreditsScene(size: scene!.size)
+                let transition = SKTransition.crossFadeWithDuration(0.3)
+                gameScene!.scaleMode = .AspectFill
+                self.scene!.view?.presentScene(gameScene, transition: transition)
+                
         
             } else {
+                
+                // remove the instructions before starting the game
+                displayOverlay(false, type: "instructions")
                 
                 // make sure the game is actually running before performing the game element functions
                 if startGame {
@@ -471,8 +506,33 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 firstNode.removeFromParent()
                 secondNode.removeFromParent()
                 
+                // reset score
+                resetScore()
+                
                 // run the game over functions
                 gameOver()
+                
+            case bulletCategory | noCategory:
+                
+                // remove the coin element only
+                if contact.bodyA.categoryBitMask == bulletCategory {
+                    
+                    // assign bullet as first contact
+                    let firstNode = firstBody.node as! SKSpriteNode
+                    
+                    // remove elements
+                    firstNode.removeFromParent()
+                    
+                } else {
+                    
+                    // assign bullet as first contact
+                    let firstNode = secondBody.node as! SKSpriteNode
+                    
+                    //remove elements
+                    firstNode.removeFromParent()
+                    
+                }
+
                 
             default:
                 
@@ -486,14 +546,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
    
     override func update(currentTime: CFTimeInterval) {
         /* Called before each frame is rendered */
-        
-        // check reset and run appropriately
-        if !reset {
-            
-            spawnPlayer(playerPosition)
-            reset = true
-            
-        }
         
         // set up our infinite scrolling
         bgImage.position = CGPoint(x: bgImage.position.x-2, y: bgImage.position.y)
@@ -541,6 +593,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         // check winning value and end game if total is reached (set to 50 points)
         if scoreNum >= 50 {
+            
+            // reset score for Scene rebuild
+            resetScore()
             
             // you win
             winGame()

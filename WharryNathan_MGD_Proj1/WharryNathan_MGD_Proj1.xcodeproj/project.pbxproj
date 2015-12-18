@@ -14,13 +14,14 @@
 		43670AA31C194CBE0088EE8F /* Bullet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43670AA21C194CBE0088EE8F /* Bullet.swift */; };
 		43670AA51C1A7F160088EE8F /* WinScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43670AA41C1A7F160088EE8F /* WinScene.swift */; };
 		43670AA71C1A88250088EE8F /* LoseScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43670AA61C1A88250088EE8F /* LoseScene.swift */; };
+		439AD1621C2110040054A613 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 439AD1611C2110040054A613 /* Launch Screen.storyboard */; };
+		439AD1641C2133600054A613 /* CreditsScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439AD1631C2133600054A613 /* CreditsScene.swift */; };
 		43AEEF9B1C0B9A13003180C0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43AEEF9A1C0B9A13003180C0 /* AppDelegate.swift */; };
 		43AEEF9D1C0B9A13003180C0 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 43AEEF9C1C0B9A13003180C0 /* GameScene.sks */; };
 		43AEEF9F1C0B9A13003180C0 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43AEEF9E1C0B9A13003180C0 /* GameScene.swift */; };
 		43AEEFA11C0B9A13003180C0 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43AEEFA01C0B9A13003180C0 /* GameViewController.swift */; };
 		43AEEFA41C0B9A13003180C0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43AEEFA21C0B9A13003180C0 /* Main.storyboard */; };
 		43AEEFA61C0B9A13003180C0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 43AEEFA51C0B9A13003180C0 /* Assets.xcassets */; };
-		43AEEFA91C0B9A13003180C0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43AEEFA71C0B9A13003180C0 /* LaunchScreen.storyboard */; };
 		43AEEFB41C0B9A14003180C0 /* WharryNathan_MGD_Proj1Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43AEEFB31C0B9A14003180C0 /* WharryNathan_MGD_Proj1Tests.swift */; };
 		43AEEFBF1C0B9A14003180C0 /* WharryNathan_MGD_Proj1UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43AEEFBE1C0B9A14003180C0 /* WharryNathan_MGD_Proj1UITests.swift */; };
 		43AEEFCF1C0D426B003180C0 /* coins.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 43AEEFCE1C0D426B003180C0 /* coins.mp3 */; };
@@ -58,6 +59,8 @@
 		43670AA21C194CBE0088EE8F /* Bullet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bullet.swift; sourceTree = "<group>"; };
 		43670AA41C1A7F160088EE8F /* WinScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WinScene.swift; sourceTree = "<group>"; };
 		43670AA61C1A88250088EE8F /* LoseScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoseScene.swift; sourceTree = "<group>"; };
+		439AD1611C2110040054A613 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = "Launch Screen.storyboard"; path = "../Launch Screen.storyboard"; sourceTree = "<group>"; };
+		439AD1631C2133600054A613 /* CreditsScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreditsScene.swift; sourceTree = "<group>"; };
 		43AEEF971C0B9A13003180C0 /* WharryNathan_MGD_Proj1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WharryNathan_MGD_Proj1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		43AEEF9A1C0B9A13003180C0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		43AEEF9C1C0B9A13003180C0 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -65,7 +68,6 @@
 		43AEEFA01C0B9A13003180C0 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		43AEEFA31C0B9A13003180C0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		43AEEFA51C0B9A13003180C0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		43AEEFA81C0B9A13003180C0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		43AEEFAA1C0B9A13003180C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		43AEEFAF1C0B9A14003180C0 /* WharryNathan_MGD_Proj1Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WharryNathan_MGD_Proj1Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		43AEEFB31C0B9A14003180C0 /* WharryNathan_MGD_Proj1Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WharryNathan_MGD_Proj1Tests.swift; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 				43AEEF9C1C0B9A13003180C0 /* GameScene.sks */,
 				43AEEF9E1C0B9A13003180C0 /* GameScene.swift */,
 				43670AA41C1A7F160088EE8F /* WinScene.swift */,
+				439AD1631C2133600054A613 /* CreditsScene.swift */,
 				43670AA61C1A88250088EE8F /* LoseScene.swift */,
 				430F63561C125FC200D90BA7 /* ProjectileElements.swift */,
 				43FD76401C114F080026424B /* Player.swift */,
@@ -158,8 +161,8 @@
 				43FD76371C0FFAB60026424B /* GlobalElements.swift */,
 				43AEEFA01C0B9A13003180C0 /* GameViewController.swift */,
 				43AEEFA21C0B9A13003180C0 /* Main.storyboard */,
+				439AD1611C2110040054A613 /* Launch Screen.storyboard */,
 				43AEEFA51C0B9A13003180C0 /* Assets.xcassets */,
-				43AEEFA71C0B9A13003180C0 /* LaunchScreen.storyboard */,
 				43AEEFAA1C0B9A13003180C0 /* Info.plist */,
 			);
 			path = WharryNathan_MGD_Proj1;
@@ -304,10 +307,10 @@
 				43AEEF9D1C0B9A13003180C0 /* GameScene.sks in Resources */,
 				43FD763B1C114AF20026424B /* Enemy.atlas in Resources */,
 				43FD763D1C114B020026424B /* Player.atlas in Resources */,
-				43AEEFA91C0B9A13003180C0 /* LaunchScreen.storyboard in Resources */,
 				43AEEFA61C0B9A13003180C0 /* Assets.xcassets in Resources */,
 				43AEEFA41C0B9A13003180C0 /* Main.storyboard in Resources */,
 				430F63591C12962D00D90BA7 /* coinage.png in Resources */,
+				439AD1621C2110040054A613 /* Launch Screen.storyboard in Resources */,
 				430F63551C1225B600D90BA7 /* pewpew.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -342,6 +345,7 @@
 				43AEEFA11C0B9A13003180C0 /* GameViewController.swift in Sources */,
 				43670AA11C19168B0088EE8F /* Enemy.swift in Sources */,
 				43FD76411C114F080026424B /* Player.swift in Sources */,
+				439AD1641C2133600054A613 /* CreditsScene.swift in Sources */,
 				43670AA31C194CBE0088EE8F /* Bullet.swift in Sources */,
 				43AEEF9B1C0B9A13003180C0 /* AppDelegate.swift in Sources */,
 				43FD76381C0FFAB60026424B /* GlobalElements.swift in Sources */,
@@ -386,14 +390,6 @@
 				43AEEFA31C0B9A13003180C0 /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		43AEEFA71C0B9A13003180C0 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				43AEEFA81C0B9A13003180C0 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -486,6 +482,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = WharryNathan_MGD_Proj1/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Project3W.WharryNathan-MGD-Proj1";
@@ -498,6 +495,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = WharryNathan_MGD_Proj1/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Project3W.WharryNathan-MGD-Proj1";

@@ -33,8 +33,8 @@ class bullet: projectile {
         bulletNode.name = "projectile"
         bulletNode.physicsBody?.usesPreciseCollisionDetection = true
         bulletNode.physicsBody?.categoryBitMask = bulletCategory
-        bulletNode.physicsBody?.contactTestBitMask = enemyCategory
-        bulletNode.physicsBody?.collisionBitMask = enemyCategory
+        bulletNode.physicsBody?.contactTestBitMask = enemyCategory | noCategory
+        bulletNode.physicsBody?.collisionBitMask = enemyCategory | noCategory
         
         // assign our positioning and add element to the scene
         bulletNode.zPosition = layers.bulletLevel

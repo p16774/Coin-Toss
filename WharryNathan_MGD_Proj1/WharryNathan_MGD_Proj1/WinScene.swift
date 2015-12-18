@@ -119,8 +119,8 @@ class WinScene: SKScene {
             self.removeFromParent()
             
             // reset the gamescene to start over
-            gameScene = GameScene(fileNamed:"GameScene")
-            let transition = SKTransition.doorsCloseHorizontalWithDuration(0.5)
+            gameScene = GameScene(size: scene!.size)
+            let transition = SKTransition.doorsCloseHorizontalWithDuration(0.3)
             gameScene!.scaleMode = .AspectFill
             self.scene!.view?.presentScene(gameScene, transition: transition)
             
