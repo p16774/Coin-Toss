@@ -40,31 +40,66 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
         walkingPath2.zPosition = layers.groundLevel
         
         // create the start button
-        startBtn = SKSpriteNode(imageNamed: "button.png")
-        startBtn.position = CGPointMake(self.frame.width/2, self.frame.height/2)
-        startBtn.zPosition = layers.buttonLevel
-        startBtn.name = "upgradegame"
+        pauseBtn = SKSpriteNode(imageNamed: "button.png")
+        pauseBtn.position = CGPointMake(self.frame.width/2, self.frame.height/2)
+        pauseBtn.zPosition = layers.buttonLevel
+        pauseBtn.name = "pausegame"
         
         // create the start button label
-        startLabel = SKLabelNode(fontNamed: "Charcoal")
-        startLabel.text = "Upgrade Game"
-        startLabel.fontSize = 25
-        startLabel.position = CGPointMake(self.frame.width/2, (self.frame.height/2)-10)
-        startLabel.zPosition = layers.buttonLevel + 1
-        startLabel.name = "upgradegame"
+        pauseLabel = SKLabelNode(fontNamed: "Charcoal")
+        pauseLabel.text = "Pause Game"
+        pauseLabel.fontSize = 25
+        pauseLabel.position = CGPointMake(self.frame.width/2, (self.frame.height/2)-10)
+        pauseLabel.zPosition = layers.buttonLevel + 1
+        pauseLabel.name = "pausegame"
+        
+        // setup the score display
+        scoreLabel = SKLabelNode(fontNamed: "Chalkduster")
+        scoreLabel.text = "Distance: "
+        scoreLabel.fontSize = 30
+        scoreLabel.position = CGPointMake(80, self.frame.height-50)
+        scoreLabel.zPosition = layers.gameLevel + 1
+        scoreLabel.name = "scorelabel"
+        
+        // setup the display of the actual score
+        scoreTotal = SKLabelNode(fontNamed: "Chalkduster")
+        scoreTotal.text = "\(distanceRan)"
+        scoreTotal.fontSize = 30
+        scoreTotal.position = CGPointMake(230, self.frame.height-50)
         
         /* Add Elements to the Parent View of GameScene */
         self.addChild(bgImage)
         self.addChild(bgImage2)
         self.addChild(walkingPath)
         self.addChild(walkingPath2)
-        objectsLayer.addChild(startBtn)
-        objectsLayer.addChild(startLabel)
+        objectsLayer.addChild(pauseLabel)
+        objectsLayer.addChild(pauseBtn)
+        objectsLayer.addChild(scoreLabel)
+        objectsLayer.addChild(scoreTotal)
         
         startGameElements()
     }
     
     // MARK: Initial Game Elements
+    
+    // add enemies to the scene
+    func addEnemy(enemyLevel:Int) {
+        
+        // set speed that enemy shows up based on distance run
+        enemySpeed = Double(distanceRan/300)
+        
+        // check to make sure our Speed is not greater than 3
+        if enemySpeed >= 2.5 { enemySpeed = 2.5 }
+        
+        let activateEnemies = SKAction.repeatActionForever(
+            SKAction.sequence([
+                SKAction.runBlock({ self.spawnEnemy(enemyPosition, level: enemyLevel) }),
+                SKAction.waitForDuration(3.0 - enemySpeed)
+                ]))
+        
+        runAction(activateEnemies, withKey: "Spawn Enemy")
+        
+    }
     
     func startGameElements() {
         
@@ -111,15 +146,9 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
         // add player to the scene
         objectsLayer.addChild(player)
         
-        // add enemies to the scene
-        runAction(SKAction.repeatActionForever(
-            SKAction.sequence([
-                SKAction.runBlock({ self.spawnEnemy(enemyPosition, level: 1) }),
-                SKAction.waitForDuration(3.0)
-                ])
-            ))
         
-        
+        // run the addEnemy function to spawn enemies
+        addEnemy(1)
         
         /**                                 **/
         /* Start the Game Animation Elements */
@@ -132,16 +161,18 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
     
     // MARK: Game Functions
     
+    // function to spawn an enemy
     func spawnEnemy(at: CGPoint, level: Int) {
         
         // create enemy and spawn at starting location
         let newEnemy = enemy()
         newEnemy.position = at
-        newEnemy.health = 5
+        newEnemy.health = 4 + level
         self.addChild(newEnemy)
         
     }
     
+    // function to check enemy health levels
     func enemyHit(enemyItem: enemy,bulletItem: bullet) {
         
         // remove elements
@@ -158,39 +189,58 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
         
     }
     
+    // function to pause the game
+    func pauseGame(value: Bool) {
+        
+        // set the game state based on the boolean passed
+        self.view!.paused = value
+        
+    }
+    
     // MARK: Touches
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        /* Called when a touch begins */
-        
-        /* TURN THIS FUNCTION INTO A PAUSE BUTTON IF TIME ALLOWS */
         
         // set up which touch we are getting
         let touch = touches.first! as UITouch
         let location = touch.locationInNode(self)
         let touchedNode = self.nodeAtPoint(location)
         
-        if touchedNode.name == "upgradegame" {
+        // verify the game is not paused before running game functions
+        if !self.view!.paused {
             
-            // remove current scene
-            self.removeAllChildren()
-            self.removeAllActions()
-            self.scene?.removeFromParent()
-            self.removeFromParent()
-            
-            // Transition to the Game Over Scene
-            gameScene = UpgradeScene(size: scene!.size)
-            let transition = SKTransition.crossFadeWithDuration(0.3)
-            gameScene!.scaleMode = .AspectFill
-            self.scene!.view?.presentScene(gameScene, transition: transition)
+            if touchedNode.name == "pausegame" {
+                
+                // add in our resume game option
+                pauseLabel.text = "Resume Game"
+                pauseLabel.name = "resumegame"
+                pauseBtn.name = "resumegame"
+                
+                // pause the game - function needed to update before pausing correctly
+                self.runAction(SKAction.runBlock({ self.pauseGame(true) }))
+                
+            } else {
+                
+                // shoot the projectile
+                newPlayer.shoot()
+                
+            }
             
         } else {
             
-            // shoot the projectile
-            newPlayer.shoot()
-            
+            // run our resume functions
+            if touchedNode.name == "resumegame" {
+                
+                // unpause the view first for the game to update the view properly
+                self.view!.paused = false
+                
+                // add in our resume game option
+                pauseLabel.text = "Pause Game"
+                pauseLabel.name = "pausegame"
+                pauseBtn.name = "pausegame"
+                
+            }
         }
-        
         
     }
     
@@ -226,7 +276,8 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
                     secondContact.removeFromParent()
                     
                     // check to see if we can remove the enemy or not
-                    var enemyNode = firstContact as! enemy
+                    //var enemyNode = firstContact as! enemy
+                    firstContact.removeFromParent()
                     
                     
                 
@@ -240,7 +291,8 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
                     secondContact.removeFromParent()
                     
                     // check to see if we can remove the enemy
-                    var enemyNode = firstContact as! enemy
+                    //var enemyNode = firstContact as! enemy
+                    firstContact.removeFromParent()
                     
                     
                 }
@@ -255,8 +307,23 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
                 firstNode.removeFromParent()
                 secondNode.removeFromParent()
                 
-                // run the game over functions
-                //gameOver()
+                // remove current scene
+                self.removeAllChildren()
+                self.removeAllActions()
+                self.scene?.removeFromParent()
+                self.removeFromParent()
+                
+                // set scoring elements
+                // implement highScore feature
+                // add coinTotal
+                // calculate distance coin function ??
+                
+                // Transition to the Game Over Scene
+                gameScene = UpgradeScene(size: scene!.size)
+                let transition = SKTransition.crossFadeWithDuration(0.3)
+                gameScene!.scaleMode = .AspectFill
+                self.scene!.view?.presentScene(gameScene, transition: transition)
+                
                 
             case bulletCategory | worldCategory:
                 
@@ -292,6 +359,26 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
     
     override func update(currentTime: CFTimeInterval) {
         /* Called before each frame is rendered */
+        
+        // set our lastUpdatedTime variable to an initial value upon Game start
+        if lastUpdatedTime == nil { lastUpdatedTime = currentTime }
+        let timeUpdate = currentTime - lastUpdatedTime
+
+        // calculate our distance based on a time element for updated frames and change displayed distance
+        distanceRan += 0.25
+        let totalDistance = Int(round(distanceRan))  // rounding to make the distance a whole number for easier display
+        scoreTotal.text = "\(totalDistance)"
+        
+        // reset the enemy speed based on distance ran
+        if timeUpdate > 30 {
+            
+            removeActionForKey("Spawn Enemy")
+            addEnemy(1)
+            
+            lastUpdatedTime = currentTime
+            
+        }
+
         
         // set up our infinite scrolling
         bgImage.position = CGPoint(x: bgImage.position.x-2, y: bgImage.position.y)

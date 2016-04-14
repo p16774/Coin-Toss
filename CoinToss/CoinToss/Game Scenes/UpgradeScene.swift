@@ -43,17 +43,62 @@ class UpgradeScene: SKScene {
         
         // create the start button
         startBtn = SKSpriteNode(imageNamed: "button.png")
-        startBtn.position = CGPointMake(self.frame.width/2, self.frame.height/2)
+        startBtn.position = CGPointMake(self.frame.width/4, self.frame.height/4)
         startBtn.zPosition = layers.buttonLevel
         startBtn.name = "endgame"
         
         // create the start button label
         startLabel = SKLabelNode(fontNamed: "Charcoal")
-        startLabel.text = "End Game"
+        startLabel.text = "New Game"
         startLabel.fontSize = 25
-        startLabel.position = CGPointMake(self.frame.width/2, (self.frame.height/2)-10)
+        startLabel.position = CGPointMake(self.frame.width/4, (self.frame.height/4)-10)
         startLabel.zPosition = layers.buttonLevel + 1
         startLabel.name = "endgame"
+        
+        /* MARK: Upgrade screen elements */
+        
+        // Coin Upgrade
+        let coinUpgrade = SKLabelNode(fontNamed: "Charcoal")
+        coinUpgrade.text = "Upgrade Coin"
+        coinUpgrade.fontSize = 20
+        coinUpgrade.position = CGPointMake(self.frame.width/4, ((self.frame.height/4)*3)-8)
+        coinUpgrade.zPosition = layers.buttonLevel+1
+        coinUpgrade.name = "coinupgrade"
+        
+        let coinBtn = SKSpriteNode(imageNamed: "button.png")
+        coinBtn.position = CGPointMake(self.frame.width/4, (self.frame.height/4)*3)
+        coinBtn.zPosition = layers.buttonLevel
+        coinBtn.name = "coinupgrade"
+        
+        // Reward Upgrade
+        let rewardUpgrade = SKLabelNode(fontNamed: "Charcoal")
+        rewardUpgrade.text = "Upgrade Reward"
+        rewardUpgrade.fontSize = 20
+        rewardUpgrade.position = CGPointMake((self.frame.width/4)*3, ((self.frame.height/4)*3)-8)
+        rewardUpgrade.zPosition = layers.buttonLevel+1
+        rewardUpgrade.name = "rewardupgrade"
+        
+        let rewardBtn = SKSpriteNode(imageNamed: "button.png")
+        rewardBtn.position = CGPointMake((self.frame.width/4)*3, (self.frame.height/4)*3)
+        rewardBtn.zPosition = layers.buttonLevel
+        rewardBtn.name = "rewardupgrade"
+        
+        // Purchase Grenade
+        let grenadePurchase = SKLabelNode(fontNamed: "Charcoal")
+        grenadePurchase.text = "Purchase Grenade"
+        grenadePurchase.fontSize = 20
+        grenadePurchase.position = CGPointMake((self.frame.width/4)*3, (self.frame.height/4)-8)
+        grenadePurchase.zPosition = layers.buttonLevel+1
+        grenadePurchase.name = "purchasegrenade"
+        
+        let grenadeBtn = SKSpriteNode(imageNamed: "button.png")
+        grenadeBtn.position = CGPointMake((self.frame.width/4)*3, self.frame.height/4)
+        grenadeBtn.zPosition = layers.buttonLevel
+        grenadeBtn.name = "purchasegrenade"
+        
+        
+        
+        
         
         /* Add Elements to the Parent View of GameScene */
         self.addChild(bgImage)
@@ -63,6 +108,13 @@ class UpgradeScene: SKScene {
         objectsLayer.addChild(creditsImage)
         objectsLayer.addChild(startBtn)
         objectsLayer.addChild(startLabel)
+        objectsLayer.addChild(coinUpgrade)
+        objectsLayer.addChild(coinBtn)
+        objectsLayer.addChild(rewardUpgrade)
+        objectsLayer.addChild(rewardBtn)
+        objectsLayer.addChild(grenadePurchase)
+        objectsLayer.addChild(grenadeBtn)
+        
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {

@@ -25,7 +25,6 @@ let walkingPath = SKSpriteNode(imageNamed: "walkingpath.png")
 let walkingPath2 = SKSpriteNode(imageNamed: "walkingpath.png")
 let creditsImage = SKSpriteNode(imageNamed: "button.png")
 var startGame : Bool = false
-var allowCollisions : Bool = true
 var player : SKSpriteNode!
 var enemies : SKSpriteNode!
 var bulletNode : SKSpriteNode!
@@ -34,6 +33,13 @@ var enemyWalking : [SKTexture]!
 var startBtn : SKSpriteNode!
 var startLabel : SKLabelNode!
 var coinImprovement : Int = 0
+var distanceRan : Float = 0.0
+var enemySpeed : Double = 0
+var scoreLabel : SKLabelNode!
+var scoreTotal : SKLabelNode!
+var pauseLabel : SKLabelNode!
+var pauseBtn : SKSpriteNode!
+var lastUpdatedTime : CFTimeInterval!
 
 // set our default player model to use as our initial character view
 let newPlayer = hero()
