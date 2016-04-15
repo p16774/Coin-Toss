@@ -17,9 +17,6 @@ class bullet: projectile {
         // initialize the parent element
         super.init()
         
-        // set up a variable for damage
-        damage = 1 + coinImprovement
-        
         // create our bullet texture
         let bulletNode = SKSpriteNode(texture: playerBullet, size: playerBullet.size())
         

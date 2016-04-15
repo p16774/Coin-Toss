@@ -32,7 +32,17 @@ var playerWalking : [SKTexture]!
 var enemyWalking : [SKTexture]!
 var startBtn : SKSpriteNode!
 var startLabel : SKLabelNode!
-var coinImprovement : Int = 0
+var coinLabel : SKLabelNode!
+var earnedCoins : SKLabelNode!
+var totalCoinsLabel : SKLabelNode!
+var totalCoinsOwned : SKLabelNode!
+var coinDamage : Int = 1
+var coinAmountHave : Int = 0
+var coinsEarned : Int = 0
+var coinUpgradePrice : Int = 150
+var rewardUpgradePrice : Int = 300
+var grenadePurchasePrice : Int = 500
+var enemyRewardTotal : Int = 1
 var distanceRan : Float = 0.0
 var enemySpeed : Double = 0
 var scoreLabel : SKLabelNode!
@@ -40,6 +50,8 @@ var scoreTotal : SKLabelNode!
 var pauseLabel : SKLabelNode!
 var pauseBtn : SKSpriteNode!
 var lastUpdatedTime : CFTimeInterval!
+var highScore : Float = 0
+var hasGrenade : Bool = false
 
 // set our default player model to use as our initial character view
 let newPlayer = hero()

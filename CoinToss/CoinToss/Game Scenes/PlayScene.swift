@@ -56,7 +56,7 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
         // setup the score display
         scoreLabel = SKLabelNode(fontNamed: "Chalkduster")
         scoreLabel.text = "Distance: "
-        scoreLabel.fontSize = 30
+        scoreLabel.fontSize = 20
         scoreLabel.position = CGPointMake(80, self.frame.height-50)
         scoreLabel.zPosition = layers.gameLevel + 1
         scoreLabel.name = "scorelabel"
@@ -64,8 +64,50 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
         // setup the display of the actual score
         scoreTotal = SKLabelNode(fontNamed: "Chalkduster")
         scoreTotal.text = "\(distanceRan)"
-        scoreTotal.fontSize = 30
-        scoreTotal.position = CGPointMake(230, self.frame.height-50)
+        scoreTotal.fontSize = 20
+        scoreTotal.position = CGPointMake(210, self.frame.height-50)
+        
+        // set up the highscore
+        let highScoreLabel = SKLabelNode(fontNamed: "Chalkduster")
+        highScoreLabel.text = "High Score: \(highScore)"
+        highScoreLabel.fontSize = 20
+        highScoreLabel.position = CGPointMake(scoreLabel.position.x + 50, scoreLabel.position.y - 100)
+        highScoreLabel.zPosition = layers.buttonLevel + 1
+        highScoreLabel.name = "highscore"
+        
+        // create the highscore backing
+        let highScoreBtn = SKSpriteNode(imageNamed: "button.png")
+        highScoreBtn.position = CGPointMake(highScoreLabel.position.x, highScoreLabel.position.y + 10)
+        highScoreBtn.zPosition = layers.buttonLevel
+        highScoreBtn.name = "highscore"
+        
+        // setup the coins display
+        coinLabel = SKLabelNode(fontNamed: "Chalkduster")
+        coinLabel.text = "Coins Earned: "
+        coinLabel.fontSize = 20
+        coinLabel.position = CGPointMake(scoreTotal.position.x + 200, self.frame.height-50)
+        coinLabel.zPosition = layers.gameLevel + 1
+        coinLabel.name = "coinlabel"
+        
+        // setup the display of the coins earned this run
+        earnedCoins = SKLabelNode(fontNamed: "Chalkduster")
+        earnedCoins.text = "\(coinsEarned)"
+        earnedCoins.fontSize = 20
+        earnedCoins.position = CGPointMake(coinLabel.position.x + 130, self.frame.height-50)
+        
+        // setup the total coins display
+        totalCoinsLabel = SKLabelNode(fontNamed: "Chalkduster")
+        totalCoinsLabel.text = "Coin Balance: "
+        totalCoinsLabel.fontSize = 20
+        totalCoinsLabel.position = CGPointMake(earnedCoins.position.x + 200, self.frame.height-50)
+        totalCoinsLabel.zPosition = layers.gameLevel + 1
+        totalCoinsLabel.name = "totalcoinslabel"
+        
+        // setup the display of the actual score
+        totalCoinsOwned = SKLabelNode(fontNamed: "Chalkduster")
+        totalCoinsOwned.text = "\(coinAmountHave)"
+        totalCoinsOwned.fontSize = 20
+        totalCoinsOwned.position = CGPointMake(totalCoinsLabel.position.x + 130, self.frame.height-50)
         
         /* Add Elements to the Parent View of GameScene */
         self.addChild(bgImage)
@@ -76,6 +118,12 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
         objectsLayer.addChild(pauseBtn)
         objectsLayer.addChild(scoreLabel)
         objectsLayer.addChild(scoreTotal)
+        objectsLayer.addChild(coinLabel)
+        objectsLayer.addChild(earnedCoins)
+        objectsLayer.addChild(totalCoinsLabel)
+        objectsLayer.addChild(totalCoinsOwned)
+        objectsLayer.addChild(highScoreLabel)
+        objectsLayer.addChild(highScoreBtn)
         
         startGameElements()
     }
@@ -279,7 +327,9 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
                     //var enemyNode = firstContact as! enemy
                     firstContact.removeFromParent()
                     
-                    
+                    // add our coin values
+                    coinsEarned += enemyRewardTotal
+                    earnedCoins.text = "\(coinsEarned)"
                 
                     
                 } else if firstBody.contactTestBitMask == bulletCategory {
@@ -294,8 +344,12 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
                     //var enemyNode = firstContact as! enemy
                     firstContact.removeFromParent()
                     
+                    // add our coin values
+                    coinsEarned += enemyRewardTotal
+                    earnedCoins.text = "\(coinsEarned)"
                     
                 }
+                
                 
             case enemyCategory | playerCategory:
                 
@@ -313,10 +367,13 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
                 self.scene?.removeFromParent()
                 self.removeFromParent()
                 
-                // set scoring elements
-                // implement highScore feature
-                // add coinTotal
                 // calculate distance coin function ??
+                
+                // set the highscrore if met
+                if distanceRan > highScore { highScore = distanceRan }
+                
+                // add the coins earned on the run to the total amount
+                coinAmountHave += coinsEarned
                 
                 // Transition to the Game Over Scene
                 gameScene = UpgradeScene(size: scene!.size)
