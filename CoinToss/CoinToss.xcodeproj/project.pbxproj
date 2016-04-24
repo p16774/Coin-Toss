@@ -26,6 +26,7 @@
 		4364AB951CBDBB3D003D2E01 /* UpgradeScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4364AB941CBDBB3D003D2E01 /* UpgradeScene.swift */; };
 		4364AB971CBDD75C003D2E01 /* CharacterNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4364AB961CBDD75C003D2E01 /* CharacterNode.swift */; };
 		4364AB991CBDD81F003D2E01 /* ProjectileNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4364AB981CBDD81F003D2E01 /* ProjectileNode.swift */; };
+		4364AB9B1CC70D1F003D2E01 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4364AB9A1CC70D1F003D2E01 /* GameKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +72,7 @@
 		4364AB941CBDBB3D003D2E01 /* UpgradeScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UpgradeScene.swift; path = "Game Scenes/UpgradeScene.swift"; sourceTree = "<group>"; };
 		4364AB961CBDD75C003D2E01 /* CharacterNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CharacterNode.swift; path = "Character Sheets/CharacterNode.swift"; sourceTree = "<group>"; };
 		4364AB981CBDD81F003D2E01 /* ProjectileNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProjectileNode.swift; path = "Character Sheets/ProjectileNode.swift"; sourceTree = "<group>"; };
+		4364AB9A1CC70D1F003D2E01 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +80,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4364AB9B1CC70D1F003D2E01 /* GameKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -101,6 +104,7 @@
 		4364AB451CB87F1D003D2E01 = {
 			isa = PBXGroup;
 			children = (
+				4364AB9A1CC70D1F003D2E01 /* GameKit.framework */,
 				4364AB501CB87F1E003D2E01 /* CoinToss */,
 				4364AB691CB87F1E003D2E01 /* CoinTossTests */,
 				4364AB741CB87F1E003D2E01 /* CoinTossUITests */,
@@ -253,6 +257,12 @@
 				TargetAttributes = {
 					4364AB4D1CB87F1D003D2E01 = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = YCBN323WW8;
+						SystemCapabilities = {
+							com.apple.GameCenter = {
+								enabled = 1;
+							};
+						};
 					};
 					4364AB651CB87F1E003D2E01 = {
 						CreatedOnToolsVersion = 7.3;
@@ -555,7 +565,7 @@
 				4364AB791CB87F1E003D2E01 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		4364AB7A1CB87F1E003D2E01 /* Build configuration list for PBXNativeTarget "CoinToss" */ = {
 			isa = XCConfigurationList;
@@ -564,7 +574,7 @@
 				4364AB7C1CB87F1E003D2E01 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		4364AB7D1CB87F1E003D2E01 /* Build configuration list for PBXNativeTarget "CoinTossTests" */ = {
 			isa = XCConfigurationList;
@@ -573,7 +583,7 @@
 				4364AB7F1CB87F1E003D2E01 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		4364AB801CB87F1E003D2E01 /* Build configuration list for PBXNativeTarget "CoinTossUITests" */ = {
 			isa = XCConfigurationList;
@@ -582,7 +592,7 @@
 				4364AB821CB87F1E003D2E01 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 	};

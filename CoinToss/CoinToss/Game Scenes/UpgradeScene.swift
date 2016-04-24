@@ -19,13 +19,16 @@ protocol ViewControllerDelegate
 class UpgradeScene: SKScene {
     override func didMoveToView(view: SKView) {
         
+        // set the game to not running to prevent the gamecenter from pausing the scene wrong
+        gameRunning = false
+        
         // setup the objects layer to hold the moveable game elements
         objectsLayer = SKNode()
         objectsLayer.name = "Objects Layer"
         addChild(objectsLayer)
         
         // create the background "dimming" effect with an image size
-        creditsImage.size = self.frame.size
+        creditsImage.size = (self.view?.frame.size)!
         creditsImage.anchorPoint = CGPointZero
         creditsImage.zPosition = layers.buttonLevel-1
         

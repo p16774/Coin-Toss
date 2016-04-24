@@ -55,7 +55,7 @@ class hero: character {
         
         let newBullet = bullet()
         newBullet.position = bulletPosition
-        self.addChild(newBullet)
+        coinLayer.addChild(newBullet)
         
 
         

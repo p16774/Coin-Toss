@@ -7,6 +7,7 @@
 //
 
 import SpriteKit
+import GameKit
 
 class PlayScene: SKScene, SKPhysicsContactDelegate {
     override func didMoveToView(view: SKView) {
@@ -14,10 +15,19 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
         // setup the objects layer to hold the moveable game elements
         objectsLayer = SKNode()
         objectsLayer.name = "Objects Layer"
+        enemyLayer = SKNode()
+        enemyLayer.name = "Enemy Layer"
+        coinLayer = SKNode()
+        coinLayer.name = "Coin Layer"
         addChild(objectsLayer)
+        addChild(enemyLayer)
+        addChild(coinLayer)
         
         // setup our contact mask
         physicsWorld.contactDelegate = self
+        
+        // setup the gamerunning variable
+        gameRunning = true
         
         // create the background image and placement
         bgImage.size = self.frame.size
@@ -108,6 +118,20 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
         totalCoinsOwned.text = "\(coinAmountHave)"
         totalCoinsOwned.fontSize = 20
         totalCoinsOwned.position = CGPointMake(totalCoinsLabel.position.x + 130, self.frame.height-50)
+        
+    // MARK: GRENADE TESTING
+        hasGrenade = true
+        
+        // check to see if the user has a grenade and post the "grenade" option
+        if hasGrenade == true {
+            grenadeBtn = SKSpriteNode(imageNamed: "grenade.png")
+            grenadeBtn.position = CGPointMake(playerPosition.x, playerPosition.y + 150)
+            grenadeBtn.zPosition = layers.gameLevel + 1
+            grenadeBtn.size = CGSize(width: (grenadeBtn.size.width*0.075), height: (grenadeBtn.size.height*0.075))
+            grenadeBtn.name = "grenade"
+            
+            objectsLayer.addChild(grenadeBtn)
+        }
         
         /* Add Elements to the Parent View of GameScene */
         self.addChild(bgImage)
@@ -216,7 +240,7 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
         let newEnemy = enemy()
         newEnemy.position = at
         newEnemy.health = 4 + level
-        self.addChild(newEnemy)
+        enemyLayer.addChild(newEnemy)
         
     }
     
@@ -245,6 +269,32 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
         
     }
     
+    // MARK: Submit Scores
+    func submitScores(score: Float) {
+        
+        // set the leaderboards and player
+        let leaderboardID = "IADCoinToss2016Distance"
+        let sScore = GKScore(leaderboardIdentifier: leaderboardID)
+        sScore.value = Int64(score*100)
+        
+        //let achieve1 = GKAchievement(identifier: "CTDistance1000")
+        //achieve1.percentComplete
+        
+        //let localPlayer: GKLocalPlayer = GKLocalPlayer.localPlayer()
+        
+        // submit the score to the Gamekit handler
+        GKScore.reportScores([sScore], withCompletionHandler: { (error: NSError?) -> Void in
+            // check for error in submission
+            if error != nil {
+                // print out the error for code display in xcode
+                print(error!.localizedDescription)
+            } else {
+                // print that the score submitted successfully
+                print("Score submitted")
+            }
+        })
+    }
+    
     // MARK: Touches
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
@@ -265,8 +315,18 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
                 pauseBtn.name = "resumegame"
                 
                 // pause the game - function needed to update before pausing correctly
-                self.runAction(SKAction.runBlock({ self.pauseGame(true) }))
+                //self.runAction(SKAction.runBlock({ self.pauseGame(true) }))
                 
+            } else if touchedNode.name == "grenade" {
+                
+                // remove the enemy children and coins from the screen
+                enemyLayer.removeAllChildren()
+                coinLayer.removeAllChildren()
+                
+                // remove the grenade since you only can have one
+                hasGrenade = false
+                grenadeBtn.removeFromParent()
+            
             } else {
                 
                 // shoot the projectile
@@ -369,8 +429,12 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
                 
                 // calculate distance coin function ??
                 
-                // set the highscrore if met
-                if distanceRan > highScore { highScore = distanceRan }
+                // set the highscrore if distanceRan is higher
+                if distanceRan > highScore {
+                    // set the highscore and submit to leaderboard
+                    highScore = distanceRan
+                    submitScores(highScore)
+                }
                 
                 // add the coins earned on the run to the total amount
                 coinAmountHave += coinsEarned
@@ -416,6 +480,11 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
     
     override func update(currentTime: CFTimeInterval) {
         /* Called before each frame is rendered */
+        
+        // pause the game if GameCenter Opens
+        if pauseLabel.text == "Resume Game" {
+            self.runAction(SKAction.runBlock({ self.pauseGame(true) }))
+        }
         
         // set our lastUpdatedTime variable to an initial value upon Game start
         if lastUpdatedTime == nil { lastUpdatedTime = currentTime }
