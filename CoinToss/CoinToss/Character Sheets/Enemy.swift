@@ -58,7 +58,7 @@ class enemy: character {
         
         
         // add enemy to the scene and animate
-        objectsLayer.addChild(enemies)
+        enemyLayer.addChild(enemies)
         animateChar(enemies, frames: enemyWalking, key: "animateWalkEnemy")
         
         // move our enemy placement across the screen

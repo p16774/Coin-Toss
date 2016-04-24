@@ -36,6 +36,7 @@ var coinLabel : SKLabelNode!
 var earnedCoins : SKLabelNode!
 var totalCoinsLabel : SKLabelNode!
 var totalCoinsOwned : SKLabelNode!
+var grenadeBtn : SKSpriteNode!
 var coinDamage : Int = 1
 var coinAmountHave : Int = 0
 var coinsEarned : Int = 0
@@ -52,6 +53,7 @@ var pauseBtn : SKSpriteNode!
 var lastUpdatedTime : CFTimeInterval!
 var highScore : Float = 0
 var hasGrenade : Bool = false
+var gameRunning : Bool = false
 
 // set our default player model to use as our initial character view
 let newPlayer = hero()
@@ -61,6 +63,8 @@ let newBullet = bullet()
 // Create Node Objects to add multiple instances to one parent
 var nodesToRemove = [SKNode]()
 var objectsLayer: SKNode!
+var enemyLayer: SKNode!
+var coinLayer: SKNode!
 
 // GameScene and Player/Enemy Locations
 var gameScene : SKScene!

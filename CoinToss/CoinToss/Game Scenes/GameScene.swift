@@ -7,6 +7,7 @@
 //
 
 import SpriteKit
+import GameKit
 
 class GameScene: SKScene {
     override func didMoveToView(view: SKView) {
@@ -57,6 +58,7 @@ class GameScene: SKScene {
         self.addChild(walkingPath2)
         objectsLayer.addChild(startBtn)
         objectsLayer.addChild(startLabel)
+
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {

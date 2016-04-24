@@ -36,7 +36,7 @@ class bullet: projectile {
         // assign our positioning and add element to the scene
         bulletNode.zPosition = layers.bulletLevel
         bulletNode.position = bulletPosition
-        objectsLayer.addChild(bulletNode)
+        coinLayer.addChild(bulletNode)
         
         // move the bullet across the screen
         let bulletDuration : Double = 2
