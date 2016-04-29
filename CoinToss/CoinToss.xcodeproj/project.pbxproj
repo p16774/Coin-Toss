@@ -27,6 +27,7 @@
 		4364AB971CBDD75C003D2E01 /* CharacterNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4364AB961CBDD75C003D2E01 /* CharacterNode.swift */; };
 		4364AB991CBDD81F003D2E01 /* ProjectileNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4364AB981CBDD81F003D2E01 /* ProjectileNode.swift */; };
 		4364AB9B1CC70D1F003D2E01 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4364AB9A1CC70D1F003D2E01 /* GameKit.framework */; };
+		4390D6751CD2E30F00696028 /* GameCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4390D6741CD2E30F00696028 /* GameCenter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +74,7 @@
 		4364AB961CBDD75C003D2E01 /* CharacterNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CharacterNode.swift; path = "Character Sheets/CharacterNode.swift"; sourceTree = "<group>"; };
 		4364AB981CBDD81F003D2E01 /* ProjectileNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProjectileNode.swift; path = "Character Sheets/ProjectileNode.swift"; sourceTree = "<group>"; };
 		4364AB9A1CC70D1F003D2E01 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
+		4390D6741CD2E30F00696028 /* GameCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameCenter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -185,6 +187,7 @@
 				4364AB551CB87F1E003D2E01 /* GameScene.swift */,
 				4364AB921CBDBA58003D2E01 /* PlayScene.swift */,
 				4364AB941CBDBB3D003D2E01 /* UpgradeScene.swift */,
+				4390D6741CD2E30F00696028 /* GameCenter.swift */,
 			);
 			name = "Game Scenes";
 			sourceTree = "<group>";
@@ -333,6 +336,7 @@
 			files = (
 				4364AB901CBDB8A3003D2E01 /* Enemy.swift in Sources */,
 				4364AB891CB9883E003D2E01 /* globals.swift in Sources */,
+				4390D6751CD2E30F00696028 /* GameCenter.swift in Sources */,
 				4364AB951CBDBB3D003D2E01 /* UpgradeScene.swift in Sources */,
 				4364AB991CBDD81F003D2E01 /* ProjectileNode.swift in Sources */,
 				4364AB561CB87F1E003D2E01 /* GameScene.swift in Sources */,

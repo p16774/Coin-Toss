@@ -40,6 +40,7 @@ var grenadeBtn : SKSpriteNode!
 var coinDamage : Int = 1
 var coinAmountHave : Int = 0
 var coinsEarned : Int = 0
+var overallCoinsEarned : Int = 0
 var coinUpgradePrice : Int = 150
 var rewardUpgradePrice : Int = 300
 var grenadePurchasePrice : Int = 500

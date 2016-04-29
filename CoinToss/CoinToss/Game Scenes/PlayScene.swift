@@ -12,6 +12,9 @@ import GameKit
 class PlayScene: SKScene, SKPhysicsContactDelegate {
     override func didMoveToView(view: SKView) {
         
+        // start by pulling in our achievements
+        pullAchievements()
+        
         // setup the objects layer to hold the moveable game elements
         objectsLayer = SKNode()
         objectsLayer.name = "Objects Layer"
@@ -436,8 +439,9 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
                     submitScores(highScore)
                 }
                 
-                // add the coins earned on the run to the total amount
+                // add the coins earned on the run to the total amount and to the total ever earned
                 coinAmountHave += coinsEarned
+                overallCoinsEarned += coinsEarned
                 
                 // Transition to the Game Over Scene
                 gameScene = UpgradeScene(size: scene!.size)
@@ -496,13 +500,37 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
         scoreTotal.text = "\(totalDistance)"
         
         // reset the enemy speed based on distance ran
-        if timeUpdate > 30 {
+        if timeUpdate >= 20 {
             
             removeActionForKey("Spawn Enemy")
             addEnemy(1)
             
             lastUpdatedTime = currentTime
             
+        }
+        
+        // check for achievement progress
+        // MARK: Achievements
+        
+        // run distance achievements
+        if distanceRan == 1000 {
+            reportAchievement("CTDistance10000", percent: 100)
+        }
+        
+        // start a game achievement
+        reportAchievement("IADCoinToss1Run", percent: 100)
+        
+        // earn money achievements
+        if overallCoinsEarned >= 10 {
+            reportAchievement("IADCoinToss10", percent: 100)
+        }
+        
+        if overallCoinsEarned >= 500 {
+            reportAchievement("IADCoinToss500", percent: 100)
+        }
+        
+        if overallCoinsEarned >= 1000 {
+            reportAchievement("IADCoinToss1000", percent: 100)
         }
 
         
